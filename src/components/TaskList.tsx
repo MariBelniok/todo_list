@@ -22,18 +22,17 @@ export function TaskList() {
         title: newTaskTitle,
         isComplete: false
       }])
-    }else{
-      alert("You must write a title for your task!")
     }
   }
 
   function handleToggleTaskCompletion(id: number) {
     // Altere entre `true` ou `false` o campo `isComplete` de uma task com dado ID
-
+    setTasks(tasks.map(t => t.id === id ? {...t, isComplete: !t.isComplete } : t))
   }
 
   function handleRemoveTask(id: number) {
     // Remova uma task da listagem pelo ID
+    setTasks(tasks.filter(t => t.id !== id))
   }
 
   return (
